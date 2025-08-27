@@ -1,0 +1,75 @@
+### Register a new user (super admin)
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "fullName": "superadmin",
+  "username": "superadmin",
+  "email": "superadmin@gmail.com",
+  "password": "secret123",
+  "role": "SUPER_ADMIN"
+}
+
+### Register a new user (editor role)
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "fullName": "editor",
+  "username": "editor",
+  "email": "editor@gmail.com",
+  "password": "secret123",
+  "role": "EDITOR"
+}
+
+### Register a new user (contributor role)
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "fullName": "contributor",
+  "username": "contributor",
+  "email": "contributor@gmail.com",
+  "password": "secret123",
+  "role": "CONTRIBUTOR"
+}
+
+### Register a new user (viewer role)
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "fullName": "viewer",
+  "username": "viewer",
+  "email": "viewer@gmail.com",
+  "password": "secret123",
+  "role": "VIEWER"
+}
+
+###
+
+### login
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "usernameOrEmail": "superadmin@gmail.com",
+  "password": "secret123"
+}
+
+###
+
+### verify otp
+POST http://localhost:8080/auth/verify-otp
+Content-Type: application/json
+Accept: application/json
+
+{
+  "usernameOrEmail": "rizkyadhi081@gmail.com",
+  "otp": "598633"
+}

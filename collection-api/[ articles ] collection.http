@@ -1,0 +1,32 @@
+###
+### Get all articles
+GET http://localhost:8080/articles
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyemt5YWRoaSIsImlhdCI6MTc1NjIwMDk3MywiZXhwIjoxNzU2MjAxODczLCJ0b2tlbl90eXBlIjoiYWNjZXNzIn0.xEyiHrgnI4ZFLpEj5-deswgHe-a9nPptBLZG0jkqiwI
+Accept: application/json
+
+###
+
+### Get article by id
+GET http://localhost:8080/articles/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyemt5YWRoaSIsImlhdCI6MTc1NjIwMDk3MywiZXhwIjoxNzU2MjAxODczLCJ0b2tlbl90eXBlIjoiYWNjZXNzIn0.xEyiHrgnI4ZFLpEj5-deswgHe-a9nPptBLZG0jkqiwI
+Accept: application/json
+
+###
+
+### Create new article
+POST http://localhost:8080/articles
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyemt5YWRoaXN1IiwiaWF0IjoxNzU2MjA0OTI3LCJleHAiOjE3NTYyMDU4MjcsInRva2VuX3R5cGUiOiJhY2Nlc3MifQ.JPfBFmYphW0P2CAZws8ZsA4d0h4QkPAkYvBb4P9UHus
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "My First Article",
+  "content": "This is the body of the article. It supports long text and Markdown."
+}
+
+###
+
+### Delete Article
+DELETE http://localhost:8080/articles/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyemt5YWRoaSIsImlhdCI6MTc1NjIwMjkyNywiZXhwIjoxNzU2MjAzODI3LCJ0b2tlbl90eXBlIjoiYWNjZXNzIn0.dLnWKnqh8TvLG0QuHRydzfcqVJm6ZcUmNnZSImfgSPY
+Accept: application/json

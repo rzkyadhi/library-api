@@ -1,0 +1,76 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: itsec
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: itsec
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d itsec"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    ports:
+      - "5540:5540"
+    depends_on:
+      - redis
+
+  app:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - mailpit
+      - redis
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/itsec
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_MAIL_HOST: mailpit
+      SPRING_MAIL_PORT: 1025
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+
+volumes:
+  db_data:
+  pgadmin_data:
+  redis_data:
