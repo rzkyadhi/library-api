@@ -22,9 +22,9 @@ public class OtpService {
     public boolean generateAndSendOtp(User user) {
         String code = String.format("%06d", random.nextInt(1_000_000));
         Otp otp = otpRepository.findByUser(user).orElse(new Otp());
-        otp.setUser(user);
-        otp.setCode(code);
-        otp.setExpiryTime(LocalDateTime.now().plusMinutes(5));
+        otp.setUser(user)
+                .setCode(code)
+                .setExpiryTime(LocalDateTime.now().plusMinutes(5));
         otpRepository.save(otp);
 
         SimpleMailMessage message = new SimpleMailMessage();

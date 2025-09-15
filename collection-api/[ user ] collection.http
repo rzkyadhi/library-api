@@ -4,7 +4,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "fullName": "superadmin",
+  "full_name": "superadmin",
   "username": "superadmin",
   "email": "superadmin@gmail.com",
   "password": "secret123",
@@ -17,7 +17,6 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "fullName": "editor",
   "username": "editor",
   "email": "editor@gmail.com",
   "password": "secret123",
@@ -71,5 +70,5 @@ Accept: application/json
 
 {
   "usernameOrEmail": "superadmin@gmail.com",
-  "otp": "969639"
+  "otp": "415916"
 }
