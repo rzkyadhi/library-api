@@ -1,4 +1,15 @@
 services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: always
+    ports:
+      - "9000:9000"
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
   postgres:
     image: postgres:latest
     container_name: itsec
@@ -67,10 +78,14 @@ services:
       SPRING_DATASOURCE_PASSWORD: postgres
       SPRING_MAIL_HOST: mailpit
       SPRING_MAIL_PORT: 1025
-      SPRING_REDIS_HOST: redis
-      SPRING_REDIS_PORT: 6379
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      JAVA_TOOL_OPTIONS: "--sun-misc-unsafe-memory-access=allow"
+      LOGGING_LEVEL_ORG_SPRINGFRAMEWORK: ERROR
+      LOGGING_LEVEL_ORG_HIBERNATE: ERROR
 
 volumes:
   db_data:
   pgadmin_data:
   redis_data:
+  portainer_data:

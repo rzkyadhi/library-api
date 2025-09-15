@@ -70,6 +70,6 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "usernameOrEmail": "rizkyadhi081@gmail.com",
-  "otp": "598633"
+  "usernameOrEmail": "superadmin@gmail.com",
+  "otp": "969639"
 }
